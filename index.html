@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio of Anusha M Chalageri – Associate Analyst at Cognizant. Blending Enterprise IT Operations, Data Logic, Full-Stack Development, and Sacred Geometry Art.">
+    <meta name="theme-color" content="#05020a">
+    <title>Anusha M Chalageri | Associate Analyst @ Cognizant</title>
+    
+    <!-- Google Fonts: Syne (Display), Plus Jakarta Sans (Body), JetBrains Mono (Technical) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-progress-container">
+        <div class="scroll-progress-bar" id="scroll-progress"></div>
+    </div>
+
+    <!-- Custom Interactive Dual Cursor (Hidden on Mobile/Touch) -->
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-ring" id="cursor-ring"></div>
+
+    <!-- Interactive Ambient Canvas & Background Architecture -->
+    <canvas id="ambient-canvas"></canvas>
+    <div class="cyber-grid-overlay"></div>
+    <div class="aurora-bg">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <!-- Floating Glass Pill Navigation -->
+    <header class="nav-wrapper">
+        <nav class="navbar glass-panel">
+            <a href="#" class="logo magnetic-target">
+                AC<span class="dot">.</span>
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="#experience" class="nav-link" data-section="experience">Experience</a></li>
+                <li><a href="#about" class="nav-link" data-section="about">About</a></li>
+                <li><a href="#skills" class="nav-link" data-section="skills">Skills</a></li>
+                <li><a href="#projects" class="nav-link" data-section="projects">Projects</a></li>
+                <li><a href="#achievements" class="nav-link" data-section="achievements">Milestones</a></li>
+                <li><a href="#gallery" class="nav-link" data-section="gallery">Art</a></li>
+                <li><a href="#contact" class="nav-cta magnetic-target" data-section="contact">Connect</a></li>
+            </ul>
+
+            <!-- Mobile Hamburger Toggle -->
+            <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Navigation Menu">
+                <span class="bar bar-1"></span>
+                <span class="bar bar-2"></span>
+                <span class="bar bar-3"></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-drawer" id="mobile-drawer">
+        <div class="drawer-backdrop" id="drawer-backdrop"></div>
+        <div class="drawer-content glass-panel">
+            <div class="drawer-header">
+                <span class="drawer-title">Navigation</span>
+                <button class="drawer-close" id="drawer-close" aria-label="Close Navigation Menu">&times;</button>
+            </div>
+            <ul class="drawer-links">
+                <li><a href="#experience" class="drawer-link">01 // Experience</a></li>
+                <li><a href="#about" class="drawer-link">02 // About</a></li>
+                <li><a href="#skills" class="drawer-link">03 // Arsenal</a></li>
+                <li><a href="#projects" class="drawer-link">04 // Projects</a></li>
+                <li><a href="#achievements" class="drawer-link">05 // Milestones</a></li>
+                <li><a href="#gallery" class="drawer-link">06 // Creative Studio</a></li>
+                <li><a href="#contact" class="drawer-link drawer-cta">Get In Touch &rarr;</a></li>
+            </ul>
+            <div class="drawer-footer">
+                <p>Anusha M Chalageri • Cognizant</p>
+            </div>
+        </div>
+    </div>
+
+    <main id="main-content">
+        <!-- Hero Section with Sacred Geometry Mandala System & Profile Photo -->
+        <section class="hero" id="hero">
+            <div class="hero-content reveal">
+                <div class="status-pill magnetic-target">
+                    <span class="beacon-wrap">
+                        <span class="pulse-beacon"></span>
+                        <span class="pulse-ping"></span>
+                    </span>
+                    <span class="status-text">Associate Analyst at Cognizant</span>
+                </div>
+
+                <h1 class="hero-title">
+                    <span class="title-word">Anusha</span> <span class="title-word">M</span> 
+                    <span class="title-word gradient-text kinetic-text">Chalageri</span>
+                </h1>
+
+                <h2 class="subtitle">Bridging Enterprise IT Operations, Data Logic &amp; Creative Precision</h2>
+                
+                <p class="hero-desc">
+                    BCA Graduate (9+ CGPA) contributing to enterprise service delivery and analytical problem-solving at Cognizant. Passionate about building resilient software systems and intricate visual design.
+                </p>
+
+                <!-- Hero Meta Highlights -->
+                <div class="hero-meta-row">
+                    <div class="meta-tag"><span class="meta-icon">&#9670;</span> Cognizant IT Ops</div>
+                    <div class="meta-tag"><span class="meta-icon">&#9670;</span> 9+ BCA CGPA</div>
+                    <div class="meta-tag"><span class="meta-icon">&#9670;</span> 2x Hackathon Podiums</div>
+                </div>
+
+                <div class="hero-buttons">
+                    <a href="#experience" class="btn primary-btn magnetic-target">
+                        <span>Explore My Journey</span>
+                        <svg class="btn-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3.333 8h9.334M8 3.333L12.667 8 8 12.667" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                    <a href="Resume_AnushaMC.pdf" download class="btn glass-btn magnetic-target">
+                        <span>Download Resume &darr;</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Clean, Refined Tech Portrait Presentation -->
+            <div class="hero-photo-wrapper mandala-container reveal" id="hero-photo-wrapper">
+                <div class="photo-ambient-glow"></div>
+                <div class="photo-orbit-ring"></div>
+                
+                <div class="photo-frame-container tilt-card" data-spotlight>
+                    <div class="photo-frame-ring">
+                        <div class="photo-frame-inner">
+                            <img src="images/profile.jpg" alt="Anusha M Chalageri – Associate Analyst at Cognizant" class="profile-img">
+                        </div>
+                    </div>
+                    
+                    <div class="photo-status-badge">
+                        <span class="pulse-beacon"></span>
+                        <span class="status-badge-text">Associate Analyst &bull; Cognizant</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 01 // Corporate Experience Section -->
+        <section id="experience" class="section reveal">
+            <div class="section-header">
+                <span class="section-tag"><span class="tag-accent">//</span> 01 // CAREER</span>
+                <h3 class="section-title">Corporate Experience</h3>
+                <div class="section-title-line"></div>
+            </div>
+
+            <div class="glass-card experience-card tilt-card" data-spotlight>
+                <div class="card-specular-edge"></div>
+                <div class="exp-header-bento">
+                    <div class="exp-title-block">
+                        <div class="role-badge-row">
+                            <h4 class="exp-role">Associate Analyst</h4>
+                            <span class="exp-status-chip">
+                                <span class="chip-dot"></span> Present &bull; Full-Time
+                            </span>
+                        </div>
+                        <p class="company-name">Cognizant Technology Solutions</p>
+                    </div>
+
+                    <!-- Enterprise Metric Badges -->
+                    <div class="exp-kpi-grid">
+                        <div class="kpi-pill">
+                            <span class="kpi-num">99.8%</span>
+                            <span class="kpi-desc">SLA Adherence</span>
+                        </div>
+                        <div class="kpi-pill">
+                            <span class="kpi-num">Global</span>
+                            <span class="kpi-desc">Enterprise Ops</span>
+                        </div>
+                        <div class="kpi-pill">
+                            <span class="kpi-num">ITIL</span>
+                            <span class="kpi-desc">Framework</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="exp-divider"></div>
+
+                <p class="exp-summary">
+                    Delivering high-availability enterprise IT support, incident analysis, and streamlined technical workflows within global client ecosystems.
+                </p>
+
+                <ul class="exp-list">
+                    <li>
+                        <span class="bullet-marker"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6L6 2L10 6L6 10Z" fill="currentColor"/></svg></span>
+                        <span>Analyze, troubleshoot, and resolve complex technical incidents while adhering to strict enterprise SLA metrics.</span>
+                    </li>
+                    <li>
+                        <span class="bullet-marker"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6L6 2L10 6L6 10Z" fill="currentColor"/></svg></span>
+                        <span>Collaborate across cross-functional engineering teams to optimize service desk workflows and root-cause documentation.</span>
+                    </li>
+                    <li>
+                        <span class="bullet-marker"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6L6 2L10 6L6 10Z" fill="currentColor"/></svg></span>
+                        <span>Apply structured analytical thinking and database fundamentals to ensure seamless operational continuity.</span>
+                    </li>
+                </ul>
+
+                <div class="exp-tags-footer">
+                    <span class="tech-tag">Enterprise Service Desk</span>
+                    <span class="tech-tag">Incident Lifecycle</span>
+                    <span class="tech-tag">RCA &amp; Telemetry</span>
+                    <span class="tech-tag">Client Operations</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 02 // About Section (Asymmetric Bento Grid) -->
+        <section id="about" class="section reveal">
+            <div class="section-header">
+                <span class="section-tag"><span class="tag-accent">//</span> 02 // PROFILE</span>
+                <h3 class="section-title">About Me</h3>
+                <div class="section-title-line"></div>
+            </div>
+
+            <div class="bento-grid">
+                <!-- Large Narrative Card -->
+                <div class="glass-card bento-large tilt-card" data-spotlight>
+                    <div class="card-specular-edge"></div>
+                    <div class="bento-badge">Analytical Mind, Creative Soul</div>
+                    <h4 class="bento-heading">Engineering Logic &amp; Artistic Precision</h4>
+                    
+                    <p>
+                        I am a Bachelor of Computer Applications graduate from KLE's JT BCA College, Gadag (<strong class="highlight-violet">9+ CGPA</strong>), currently working as an Associate Analyst at <strong class="highlight-orchid">Cognizant</strong>.
+                    </p>
+                    <p>
+                        My background blends full-stack web concepts, Python/Java development, and SQL database management with real-world enterprise operations. Outside of technology, my discipline in hand-drawn mandala art and ink calligraphy shapes how I approach every system—with symmetry, patience, and attention to detail.
+                    </p>
+
+                    <div class="bento-traits">
+                        <span class="trait-chip"><span class="trait-dot"></span> Structural Symmetry</span>
+                        <span class="trait-chip"><span class="trait-dot"></span> Enterprise Reliability</span>
+                        <span class="trait-chip"><span class="trait-dot"></span> Algorithmic Logic</span>
+                    </div>
+                </div>
+
+                <!-- Bento Stat 1: 9+ CGPA -->
+                <div class="glass-card bento-stat tilt-card" data-spotlight>
+                    <div class="card-specular-edge"></div>
+                    <div class="stat-icon-wrap">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                    </div>
+                    <div class="stat-number-wrap">
+                        <span class="stat-number counter" data-target="9">0</span><span class="stat-suffix">+</span>
+                    </div>
+                    <span class="stat-label">BCA CGPA<br><span class="stat-sub">Karnatak University</span></span>
+                    <span class="stat-micro-badge">Academic Excellence</span>
+                </div>
+
+                <!-- Bento Stat 2: 2x Hackathon Podiums -->
+                <div class="glass-card bento-stat tilt-card" data-spotlight>
+                    <div class="card-specular-edge"></div>
+                    <div class="stat-icon-wrap">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
+                    </div>
+                    <div class="stat-number-wrap">
+                        <span class="stat-number counter" data-target="2">0</span><span class="stat-suffix">x</span>
+                    </div>
+                    <span class="stat-label">Inter-College<br><span class="stat-sub">Hackathon Podiums</span></span>
+                    <span class="stat-micro-badge">Competitive Engineering</span>
+                </div>
+
+                <!-- Bento Card 4: Philosophy Matrix -->
+                <div class="glass-card bento-wide tilt-card" data-spotlight>
+                    <div class="card-specular-edge"></div>
+                    <div class="philosophy-flex">
+                        <div class="philosophy-content">
+                            <span class="philosophy-tag">CORE PHILOSOPHY</span>
+                            <h5 class="philosophy-title">Where Clean Code Meets Sacred Symmetry</h5>
+                            <p class="philosophy-text">
+                                Drawing intricate mandalas requires millimeter-level focus and mathematical rhythm—the exact mindset required to architect clean databases, optimize service workflows, and write resilient code.
+                            </p>
+                        </div>
+                        <div class="philosophy-quote">
+                            <span class="quote-mark">&ldquo;</span>
+                            <span class="quote-body">Symmetry in art, clarity in logic, resilience in systems.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 03 // Technical Skills Section -->
+        <section id="skills" class="section reveal">
+            <div class="section-header">
+                <span class="section-tag"><span class="tag-accent">//</span> 03 // ARSENAL</span>
+                <h3 class="section-title">Technical Capabilities</h3>
+                <div class="section-title-line"></div>
+            </div>
+
+            <div class="skills-grid">
+                <!-- Skill Category 1 -->
+                <div class="glass-card skill-box tilt-card" data-spotlight>
+                    <div class="card-specular-edge"></div>
+                    <div class="skill-header">
+                        <div class="skill-icon-bubble">{ }</div>
+                        <div>
+                            <h4>Languages &amp; Core</h4>
+                            <span class="skill-subtitle">Foundations &amp; Logic</span>
+                        </div>
+                    </div>
+                    <div class="pill-wrap">
+                        <span class="skill-pill"><span class="pill-glow"></span>Python</span>
+                        <span class="skill-pill"><span class="pill-glow"></span>C</span>
+                        <span class="skill-pill"><span class="pill-glow"></span>Core Java</span>
+                        <span class="skill-pill"><span class="pill-glow"></span>OOP</span>
+                        <span class="skill-pill"><span class="pill-glow"></span>Data Structures</span>
+                    </div>
+                </div>
+
+                <!-- Skill Category 2 -->
+                <div class="glass-card skill-box tilt-card" data-spotlight>
+                    <div class="card-specular-edge"></div>
+                    <div class="skill-header">
+                        <div class="skill-icon-bubble">&lt;/&gt;</div>
+                        <div>
+                            <h4>Web &amp; Frameworks</h4>
+                            <span class="skill-subtitle">Interactive Architecture</span>
+                        </div>
+                    </div>
+                    <div class="pill-wrap">
+                        <span class="skill-pill"><span class="pill-glow"></span>HTML5</span>
+                        <span class="skill-pill"><span class="pill-glow"></span>CSS3</span>
+                        <span class="skill-pill"><span class="pill-glow"></span>Responsive UI</span>
+                        <span class="skill-pill"><span class="pill-glow"></span>Flask</span>
+                        <span class="skill-pill"><span class="pill-glow"></span>Spring</span>
+                        <span class="skill-pill"><span class="pill-glow"></span>Hibernate</span>
+                    </div>
+                </div>
+
+                <!-- Skill Category 3 -->
+                <div class="glass-card skill-box tilt-card" data-spotlight>
+                    <div class="card-specular-edge"></div>
+                    <div class="skill-header">
+                        <div class="skill-icon-bubble">&#9783;</div>
+                        <div>
+                            <h4>Databases &amp; Ops</h4>
+                            <span class="skill-subtitle">Storage &amp; Enterprise Tooling</span>
+                        </div>
+                    </div>
+                    <div class="pill-wrap">
+                        <span class="skill-pill"><span class="pill-glow"></span>MySQL</span>
+                        <span class="skill-pill"><span class="pill-glow"></span>Oracle SQL</span>
+                        <span class="skill-pill"><span class="pill-glow"></span>ITIL / Service Desk</span>
+                        <span class="skill-pill"><span class="pill-glow"></span>GitHub</span>
+                        <span class="skill-pill"><span class="pill-glow"></span>VS Code</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 04 // Featured Projects (SkillSync Nexus + HMS Video) -->
+        <section id="projects" class="section reveal">
+            <div class="section-header">
+                <span class="section-tag"><span class="tag-accent">//</span> 04 // BUILDS</span>
+                <h3 class="section-title">Featured Projects</h3>
+                <div class="section-title-line"></div>
+            </div>
+
+            <div class="projects-grid">
+                <!-- Project 1: SkillSync Nexus with Clickable Screenshots -->
+                <div class="glass-card project-card tilt-card" data-spotlight>
+                    <div class="card-specular-edge"></div>
+                    <div class="project-card-inner">
+                        <div class="project-visual-container">
+                            <div class="project-gallery">
+                                <div class="gallery-photo-frame frame-featured" onclick="openLightbox('images/skillsync_1.jpg', 'SkillSync Nexus – Peer-to-Peer Skill Exchange Dashboard')">
+                                    <img src="images/skillsync_1.jpg" alt="SkillSync Dashboard" loading="lazy">
+                                    <div class="photo-overlay">
+                                        <span class="zoom-pill"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg> Inspect</span>
+                                    </div>
+                                </div>
+                                <div class="gallery-photo-frame" onclick="openLightbox('images/skillsync_2.jpg', 'SkillSync Nexus – Live WebRTC & Multilingual Subtitles')">
+                                    <img src="images/skillsync_2.jpg" alt="SkillSync Real-Time Video & Subtitles" loading="lazy">
+                                    <div class="photo-overlay">
+                                        <span class="zoom-pill"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg> Inspect</span>
+                                    </div>
+                                </div>
+                                <div class="gallery-photo-frame" onclick="openLightbox('images/skillsync_3.jpg', 'SkillSync Nexus – Smart Scheduling & Credit Wallet')">
+                                    <img src="images/skillsync_3.jpg" alt="SkillSync Wallet & Scheduling" loading="lazy">
+                                    <div class="photo-overlay">
+                                        <span class="zoom-pill"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg> Inspect</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="gallery-hint">Click any screenshot to enlarge &#8599;</span>
+                        </div>
+
+                        <div class="project-info-wrap">
+                            <div class="project-top">
+                                <span class="project-type"><span class="type-indicator"></span>AI &amp; Real-Time Web</span>
+                                <a href="https://github.com/Anusha-sept/SkillSync_Peer_Exchange.git" target="_blank" rel="noopener noreferrer" class="icon-link magnetic-target">
+                                    <span>GitHub</span>
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                                </a>
+                            </div>
+
+                            <h4 class="project-title">SkillSync Nexus</h4>
+                            <p class="project-desc">
+                                An AI-driven peer-to-peer skill exchange platform featuring a credit-based economy, real-time WebRTC video sessions, live multilingual translated subtitles, smart scheduling, and secure wallet transactions.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="tech-line">
+                        <span class="tech-pill">Python</span>
+                        <span class="tech-pill">Flask</span>
+                        <span class="tech-pill">Agora RTC</span>
+                        <span class="tech-pill">SocketIO</span>
+                        <span class="tech-pill">SQL</span>
+                    </div>
+                </div>
+
+                <!-- Project 2: Hospital Management System with Demo Video -->
+                <div class="glass-card project-card tilt-card" data-spotlight>
+                    <div class="card-specular-edge"></div>
+                    <div class="project-card-inner">
+                        <div class="project-visual-container">
+                            <!-- Cyber OS Window Frame -->
+                            <div class="browser-mockup">
+                                <div class="browser-header">
+                                    <div class="window-dots">
+                                        <span class="dot-red"></span>
+                                        <span class="dot-yellow"></span>
+                                        <span class="dot-green"></span>
+                                    </div>
+                                    <span class="browser-title">HMS_Enterprise_v1.0.jar</span>
+                                    <span class="window-status">Active GUI</span>
+                                </div>
+                                <div class="media-preview">
+                                    <video controls muted loop playsinline preload="metadata">
+                                        <source src="images/hms_demo.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                </div>
+                            </div>
+                            <span class="gallery-hint">Embedded interactive video recording</span>
+                        </div>
+
+                        <div class="project-info-wrap">
+                            <div class="project-top">
+                                <span class="project-type"><span class="type-indicator"></span>Enterprise Desktop GUI</span>
+                                <a href="https://github.com/Anusha-sept/Hospital_Management_System-Java-and-sql.git" target="_blank" rel="noopener noreferrer" class="icon-link magnetic-target">
+                                    <span>GitHub</span>
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                                </a>
+                            </div>
+
+                            <h4 class="project-title">Hospital Management System</h4>
+                            <p class="project-desc">
+                                A relational database-backed desktop application designed to streamline patient admissions, medical staff assignments, room availability, and departmental records with intuitive form validation.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="tech-line">
+                        <span class="tech-pill">Java</span>
+                        <span class="tech-pill">Swing &amp; AWT</span>
+                        <span class="tech-pill">SQL</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 05 // Recognition & Leadership with Visual Proofs -->
+        <section id="achievements" class="section reveal">
+            <div class="section-header">
+                <span class="section-tag"><span class="tag-accent">//</span> 05 // RECOGNITION &amp; LEADERSHIP</span>
+                <h3 class="section-title">Certificates &amp; Milestones</h3>
+                <div class="section-title-line"></div>
+            </div>
+
+            <div class="timeline">
+                <!-- Certificate 1: Tech Nova -->
+                <div class="timeline-card glass-card proof-card tilt-card" data-spotlight onclick="openLightbox('images/cert_technova.jpg', '2nd Prize – Event Horizon (AI Prompt Engineering), Tech Nova 2026')">
+                    <div class="card-specular-edge"></div>
+                    <div class="proof-thumb">
+                        <img src="images/cert_technova.jpg" alt="Tech Nova 2026 Certificate" loading="lazy" onerror="this.classList.add('img-fallback-active')">
+                        <div class="proof-fallback">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="m9 12 2 2 4-4"/></svg>
+                            <span>Tech Nova 2026</span>
+                        </div>
+                        <span class="zoom-tag">View Certificate &#8599;</span>
+                    </div>
+                    <div class="timeline-meta">
+                        <span class="time-badge"><span class="badge-dot"></span> March 2026</span>
+                        <span class="category-badge">State Competition</span>
+                    </div>
+                    <h4>2nd Prize – Event Horizon (AI Prompt Engineering)</h4>
+                    <p>Tech Nova 2026, KLE Society's College of BCA, Belagavi.</p>
+                </div>
+
+                <!-- Leadership Photo: IIC Secretary -->
+                <div class="timeline-card glass-card proof-card tilt-card" data-spotlight onclick="openLightbox('images/leadership_iic.jpg', 'IIC Secretary – KLE JT BCA College, Gadag')">
+                    <div class="card-specular-edge"></div>
+                    <div class="proof-thumb">
+                        <img src="images/leadership_iic.jpg" alt="IIC Leadership Event" loading="lazy" onerror="this.classList.add('img-fallback-active')">
+                        <div class="proof-fallback">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                            <span>IIC Council Secretary</span>
+                        </div>
+                        <span class="zoom-tag">View Photo &#8599;</span>
+                    </div>
+                    <div class="timeline-meta">
+                        <span class="time-badge"><span class="badge-dot"></span> 2-Year Leadership Term</span>
+                        <span class="category-badge">Elected Council</span>
+                    </div>
+                    <h4>Secretary – Institution's Innovation Council (IIC)</h4>
+                    <p>KLE JT BCA College, Gadag. Spearheaded student innovation programs and organized an inter-college startup poster-making competition.</p>
+                </div>
+
+                <!-- Certificate 2: BITM Ballari -->
+                <div class="timeline-card glass-card proof-card tilt-card" data-spotlight onclick="openLightbox('images/cert_ballari.jpg', '3rd Prize – Chakravyuha 2.0 (Tech Spectra), BITM Ballari')">
+                    <div class="card-specular-edge"></div>
+                    <div class="proof-thumb">
+                        <img src="images/cert_ballari.jpg" alt="BITM Ballari Certificate" loading="lazy" onerror="this.classList.add('img-fallback-active')">
+                        <div class="proof-fallback">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+                            <span>Chakravyuha 2.0</span>
+                        </div>
+                        <span class="zoom-tag">View Certificate &#8599;</span>
+                    </div>
+                    <div class="timeline-meta">
+                        <span class="time-badge"><span class="badge-dot"></span> April 2025</span>
+                        <span class="category-badge">Hackathon Podium</span>
+                    </div>
+                    <h4>3rd Prize – Chakravyuha 2.0 (Tech Spectra)</h4>
+                    <p>BITM Ballari.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 06 // Interactive Art & Mandala Gallery -->
+        <section id="gallery" class="section reveal">
+            <div class="section-header">
+                <span class="section-tag"><span class="tag-accent">//</span> 06 // CREATIVE STUDIO</span>
+                <h3 class="section-title">Beyond Code: Art &amp; Mandalas</h3>
+                <div class="section-title-line"></div>
+            </div>
+
+            <div class="gallery-grid">
+                <!-- Art Item 1 -->
+                <div class="art-card glass-card tilt-card" data-spotlight onclick="openLightbox('images/mandala1.jpg', 'Intricate Ink Mandala – Fine-liner pen on paper')">
+                    <div class="card-specular-edge"></div>
+                    <div class="art-img-wrap">
+                        <img src="images/mandala1.jpg" alt="Intricate Ink Mandala" loading="lazy">
+                        <div class="art-overlay">
+                            <span class="inspect-btn">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                                Click to Inspect &#8599;
+                            </span>
+                        </div>
+                    </div>
+                    <div class="art-info">
+                        <span class="art-badge">Sacred Geometry</span>
+                        <h4>Intricate Ink Mandala</h4>
+                        <p>Fine-liner pen on paper</p>
+                    </div>
+                </div>
+
+                <!-- Art Item 2 -->
+                <div class="art-card glass-card tilt-card" data-spotlight onclick="openLightbox('images/calligraphy1.jpg', 'Custom Ink Calligraphy – Hand-lettered layout design')">
+                    <div class="card-specular-edge"></div>
+                    <div class="art-img-wrap">
+                        <img src="images/calligraphy1.jpg" alt="Custom Ink Calligraphy" loading="lazy">
+                        <div class="art-overlay">
+                            <span class="inspect-btn">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                                Click to Inspect &#8599;
+                            </span>
+                        </div>
+                    </div>
+                    <div class="art-info">
+                        <span class="art-badge">Lettering &amp; Rhythm</span>
+                        <h4>Custom Ink Calligraphy</h4>
+                        <p>Hand-lettered layout design</p>
+                    </div>
+                </div>
+
+                <!-- Art Item 3 -->
+                <div class="art-card glass-card tilt-card" data-spotlight onclick="openLightbox('images/sketch1.jpg', 'Detailed Pencil Sketch – Graphite & shading study')">
+                    <div class="card-specular-edge"></div>
+                    <div class="art-img-wrap">
+                        <img src="images/sketch1.jpg" alt="Detailed Pencil Sketch" loading="lazy">
+                        <div class="art-overlay">
+                            <span class="inspect-btn">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                                Click to Inspect &#8599;
+                            </span>
+                        </div>
+                    </div>
+                    <div class="art-info">
+                        <span class="art-badge">Graphite Study</span>
+                        <h4>Detailed Pencil Sketch</h4>
+                        <p>Graphite &amp; shading study</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Universal Lightbox Modal with Full Carousel Controls -->
+    <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Media Preview Lightbox">
+        <div class="lightbox-overlay" onclick="closeLightbox()"></div>
+        <div class="lightbox-inner">
+            <button class="lightbox-nav-btn prev-btn" id="lightbox-prev" aria-label="Previous Media" onclick="navigateLightbox(-1)">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            
+            <div class="lightbox-stage">
+                <div class="lightbox-counter" id="lightbox-counter">1 / 1</div>
+                <img id="lightbox-img" src="" alt="Expanded View">
+                <p id="lightbox-caption"></p>
+            </div>
+
+            <button class="lightbox-nav-btn next-btn" id="lightbox-next" aria-label="Next Media" onclick="navigateLightbox(1)">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+
+            <button class="close-btn" aria-label="Close Lightbox" onclick="closeLightbox()">&times;</button>
+        </div>
+    </div>
+
+    <!-- High-Impact Closing CTA Banner & Footer -->
+    <footer id="contact" class="footer">
+        <div class="footer-cta-card glass-panel reveal" data-spotlight>
+            <div class="card-specular-edge"></div>
+            <div class="cta-glow-element"></div>
+            
+            <span class="footer-status-beacon">
+                <span class="beacon-circle"></span> Open for High-Impact Opportunities
+            </span>
+            
+            <h2 class="footer-heading">Let's Build Something Extraordinary</h2>
+            <p class="footer-sub">Based in Karnataka &bull; Associate Analyst at Cognizant</p>
+            
+            <div class="footer-links">
+                <a href="mailto:anusha.chalageri17@gmail.com" class="btn primary-btn footer-btn magnetic-target">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    <span>anusha.chalageri17@gmail.com</span>
+                </a>
+                <a href="https://linkedin.com/in/anushachalageri" target="_blank" rel="noopener noreferrer" class="btn glass-btn footer-btn magnetic-target">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.22a1.62 1.62 0 1 0 0 3.24 1.62 1.62 0 0 0 0-3.24Z"/></svg>
+                    <span>LinkedIn Profile</span>
+                </a>
+                <a href="tel:6362240797" class="btn glass-btn footer-btn magnetic-target">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    <span>+91 6362240797</span>
+                </a>
+            </div>
+
+            <div class="footer-bottom-row">
+                <p class="copyright">&copy; 2026 Anusha M Chalageri &bull; Crafted in Cyber-Royal Obsidian &amp; Luminous Violet</p>
+                <a href="#hero" class="back-to-top magnetic-target" aria-label="Back to Top">
+                    <span>Back to Top</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Core Script -->
+    <script src="script.js"></script>
+</body>
+</html>
