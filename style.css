@@ -5,34 +5,34 @@
    ========================================================================== */
 
 :root {
-    /* Color System: Obsidian & Luminous Violet */
-    --bg-obsidian: #05020a;
-    --bg-obsidian-subtle: #080413;
-    --bg-glass-base: rgba(14, 8, 28, 0.6);
-    --bg-glass-elevated: rgba(22, 12, 42, 0.72);
-    --bg-glass-card: rgba(18, 10, 35, 0.55);
+    /* Color System: Sleek Carbon-Obsidian & Royal Violet */
+    --bg-obsidian: #09090b;
+    --bg-obsidian-subtle: #0f0f13;
+    --bg-glass-base: rgba(18, 18, 24, 0.75);
+    --bg-glass-elevated: rgba(24, 24, 32, 0.85);
+    --bg-glass-card: rgba(20, 20, 27, 0.72);
 
-    /* Accents */
-    --electric-amethyst: #9333ea;
-    --luminous-orchid: #e879f9;
-    --neon-pink: #f472b6;
+    /* Accents (Calmer, Executive Tech) */
+    --electric-amethyst: #8b5cf6;   /* Crisp royal violet */
+    --luminous-orchid: #c4b5fd;     /* Replaces neon orchid with soft lavender */
+    --neon-pink: #a78bfa;           /* Replaces bright pink with clean periwinkle */
     --soft-lavender: #f3e8ff;
-    --deep-purple: #581c87;
+    --deep-purple: #4c1d95;
     --cyber-cyan: #38bdf8;
     --beacon-emerald: #10b981;
 
     /* Glass & Borders */
-    --glass-border: rgba(168, 85, 247, 0.2);
-    --glass-border-hover: rgba(232, 121, 249, 0.55);
-    --specular-highlight: rgba(255, 255, 255, 0.22);
-    --specular-border: 1px solid rgba(255, 255, 255, 0.12);
+    --glass-border: rgba(139, 92, 246, 0.16);
+    --glass-border-hover: rgba(167, 139, 250, 0.42);
+    --specular-highlight: rgba(255, 255, 255, 0.14);
+    --specular-border: 1px solid rgba(255, 255, 255, 0.08);
 
-    /* Text */
+    /* Text (Neutral High-Contrast for Effortless Reading) */
     --text-pure: #ffffff;
-    --text-primary: #f8fafc;
-    --text-secondary: #c4b5fd;
-    --text-muted: #948aa8;
-    --text-dim: #6b6180;
+    --text-primary: #f4f4f5;
+    --text-secondary: #d4d4d8;
+    --text-muted: #a1a1aa;
+    --text-dim: #71717a;
 
     /* Typography */
     --font-display: 'Syne', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -203,15 +203,15 @@ body.cursor-hover .cursor-ring {
 .blob {
     position: absolute;
     border-radius: 50%;
-    filter: blur(120px);
-    opacity: 0.35;
+    filter: blur(140px);
+    opacity: 0.18; /* Toned down from 0.35 so cards and text pop cleanly */
     animation: auroraDrift 20s infinite alternate ease-in-out;
 }
 
 .blob-1 {
     width: 600px;
     height: 600px;
-    background: radial-gradient(circle, #581c87 0%, rgba(147, 51, 234, 0.2) 70%, transparent 100%);
+    background: radial-gradient(circle, #4c1d95 0%, rgba(124, 58, 237, 0.15) 70%, transparent 100%);
     top: -15%;
     left: -10%;
 }
@@ -219,7 +219,7 @@ body.cursor-hover .cursor-ring {
 .blob-2 {
     width: 550px;
     height: 550px;
-    background: radial-gradient(circle, #7e22ce 0%, rgba(232, 121, 249, 0.2) 70%, transparent 100%);
+    background: radial-gradient(circle, #5b21b6 0%, rgba(139, 92, 246, 0.15) 70%, transparent 100%);
     bottom: 5%;
     right: -8%;
     animation-delay: -6s;
@@ -229,7 +229,8 @@ body.cursor-hover .cursor-ring {
 .blob-3 {
     width: 480px;
     height: 480px;
-    background: radial-gradient(circle, #831843 0%, rgba(219, 39, 119, 0.2) 70%, transparent 100%);
+    /* Replaced bright pink with a deep, subtle indigo-slate glow */
+    background: radial-gradient(circle, #312e81 0%, rgba(79, 70, 229, 0.12) 70%, transparent 100%);
     top: 40%;
     left: 30%;
     animation-delay: -12s;
