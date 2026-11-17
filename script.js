@@ -1,14 +1,121 @@
 /**
- * ANUSHA M CHALAGERI — AWWWARDS-CALIBER PORTFOLIO
+ * ANUSHA M CHALAGERI — EXECUTIVE CREATIVE PORTFOLIO
  * Principal Creative Motion & Interaction Engine
- * Vanilla JS • Zero External Dependencies • 60fps Physics
+ * Palette: Nocturne Obsidian Slate & Astral Champagne
+ * Vanilla JS • Zero External Dependencies • 60fps Hardware-Accelerated Physics
  */
 
 (function () {
     'use strict';
 
-    // Check user preference for reduced motion
+    // Mark JS ready on document element to enable choreographed reveal states
+    document.documentElement.classList.add('js-ready');
+
+    // Check user accessibility preference for reduced motion
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+    /* ==========================================================================
+       0. CINEMATIC "PORTFOLIO" KEYNOTE INTRO & PAGE LANDING ENGINE
+       ========================================================================== */
+    const introCurtain = document.getElementById('intro-curtain');
+    const introCounter = document.getElementById('intro-counter');
+    const introProgressBar = document.getElementById('intro-progress-bar');
+    let introFinished = false;
+
+    function finishIntroAndLandPage() {
+        if (introFinished) return;
+        introFinished = true;
+
+        // Always return to top before releasing overflow (prevents scroll-jump)
+        window.scrollTo(0, 0);
+
+        if (introCurtain) {
+            introCurtain.classList.add('curtain-lift');
+            setTimeout(() => {
+                introCurtain.style.display = 'none';
+            }, 950);
+        }
+
+        // Release overflow AFTER scroll-to-top is applied
+        document.body.style.overflow = '';
+
+        // Trigger page landing sequence — hero CSS animations fire from here
+        document.body.classList.add('page-landed');
+
+        // Dispatch a custom event so later-registered listeners can react
+        // (fixes the updateNavSpy reference-before-definition bug)
+        setTimeout(() => {
+            document.dispatchEvent(new Event('page-landed'));
+        }, 400);
+
+        // Register scroll-triggered section observer AFTER curtain finishes lifting
+        // (prevents premature firing while body still had overflow:hidden)
+        setTimeout(initSectionObserver, 900);
+    }
+
+    if (prefersReducedMotion || !introCurtain) {
+        if (introCurtain) introCurtain.style.display = 'none';
+        document.body.classList.add('page-landed');
+        document.body.style.overflow = '';
+        // Fire immediately — no curtain delay needed
+        setTimeout(() => {
+            document.dispatchEvent(new Event('page-landed'));
+            initSectionObserver();
+        }, 100);
+    } else {
+        document.body.style.overflow = 'hidden';
+
+        // Count up from 0% to 100%
+        const totalDuration = 900; // ms (reduced from 1200ms for snappier feel)
+        const startTime = performance.now();
+
+        function stepIntroProgress(now) {
+            if (introFinished) return;
+            const elapsed = now - startTime;
+            const progress = Math.min(elapsed / totalDuration, 1);
+            
+            // EaseOutQuad
+            const eased = 1 - (1 - progress) * (1 - progress);
+            const currentCount = Math.floor(eased * 100);
+
+            if (introCounter) {
+                introCounter.textContent = `${String(currentCount).padStart(2, '0')}%`;
+            }
+            if (introProgressBar) {
+                introProgressBar.style.width = `${currentCount}%`;
+            }
+
+            if (progress < 1) {
+                requestAnimationFrame(stepIntroProgress);
+            } else {
+                if (introCounter) introCounter.textContent = '100%';
+                if (introProgressBar) introProgressBar.style.width = '100%';
+                // Do NOT auto-dismiss — wait for user click or keypress
+                // Make the skip hint more visible once loading is done
+                const skipHint = document.querySelector('.intro-skip-hint');
+                if (skipHint) {
+                    skipHint.style.opacity = '1';
+                    skipHint.style.animation = 'none';
+                    skipHint.textContent = 'Click anywhere to enter →';
+                }
+                const introStatus = document.querySelector('.intro-status');
+                if (introStatus) {
+                    introStatus.innerHTML = '<span class="intro-status-pulse"></span> READY';
+                }
+            }
+        }
+
+        requestAnimationFrame(stepIntroProgress);
+
+        // Click or keydown anywhere to skip and land immediately
+        introCurtain.addEventListener('click', finishIntroAndLandPage);
+        window.addEventListener('keydown', (e) => {
+            if (!introFinished && (e.key === ' ' || e.key === 'Enter' || e.key === 'Escape')) {
+                finishIntroAndLandPage();
+            }
+        });
+    }
 
     /* ==========================================================================
        1. AMBIENT PARTICLES & CONSTELLATION CANVAS
@@ -17,8 +124,6 @@
     let ctx = null;
     let particles = [];
     let animationFrameId = null;
-    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-
     let mousePosition = { x: -1000, y: -1000 };
 
     if (canvas && !prefersReducedMotion) {
@@ -38,11 +143,22 @@
             reset() {
                 this.x = Math.random() * canvas.width;
                 this.y = Math.random() * canvas.height;
-                this.vx = (Math.random() - 0.5) * 0.45;
-                this.vy = (Math.random() - 0.5) * 0.45;
-                this.radius = Math.random() * 1.8 + 0.6;
+                this.vx = (Math.random() - 0.5) * 0.4;
+                this.vy = (Math.random() - 0.5) * 0.4;
+                this.radius = Math.random() * 1.6 + 0.6;
                 this.alpha = Math.random() * 0.45 + 0.15;
-                this.color = Math.random() > 0.4 ? '#e879f9' : (Math.random() > 0.5 ? '#9333ea' : '#38bdf8');
+                
+                // Astral Champagne, Warm Amber & Ice Frost Palette
+                const rand = Math.random();
+                if (rand > 0.5) {
+                    this.color = '#f3d098'; // Astral Champagne
+                } else if (rand > 0.25) {
+                    this.color = '#e5973b'; // Warm Amber
+                } else if (rand > 0.1) {
+                    this.color = '#38bdf8'; // Cerulean Frost
+                } else {
+                    this.color = '#cbd5e1'; // Warm Titanium
+                }
             }
 
             update() {
@@ -55,14 +171,14 @@
                 if (this.y < 0) this.y = canvas.height;
                 if (this.y > canvas.height) this.y = 0;
 
-                // Mouse Repulsion / Influence
+                // Gentle Cursor Repulsion / Flow
                 const dx = mousePosition.x - this.x;
                 const dy = mousePosition.y - this.y;
                 const dist = Math.sqrt(dx * dx + dy * dy);
-                if (dist < 120) {
-                    const force = (120 - dist) / 120;
-                    this.x -= (dx / dist) * force * 1.5;
-                    this.y -= (dy / dist) * force * 1.5;
+                if (dist < 130) {
+                    const force = (130 - dist) / 130;
+                    this.x -= (dx / dist) * force * 1.8;
+                    this.y -= (dy / dist) * force * 1.8;
                 }
             }
 
@@ -71,7 +187,7 @@
                 ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
                 ctx.fillStyle = this.color;
                 ctx.globalAlpha = this.alpha;
-                ctx.shadowBlur = 8;
+                ctx.shadowBlur = 6;
                 ctx.shadowColor = this.color;
                 ctx.fill();
                 ctx.shadowBlur = 0;
@@ -80,15 +196,14 @@
 
         function initParticles() {
             particles = [];
-            // Particle density scaled to screen resolution
-            const count = Math.min(Math.floor((canvas.width * canvas.height) / 26000), 55);
+            const count = Math.min(Math.floor((canvas.width * canvas.height) / 28000), 52);
             for (let i = 0; i < count; i++) {
                 particles.push(new Particle());
             }
         }
 
         function connectParticles() {
-            const maxDistance = 110;
+            const maxDistance = 115;
             for (let i = 0; i < particles.length; i++) {
                 for (let j = i + 1; j < particles.length; j++) {
                     const p1 = particles[i];
@@ -98,9 +213,8 @@
                     const dist = Math.sqrt(dx * dx + dy * dy);
 
                     if (dist < maxDistance) {
-                        const alpha = (1 - dist / maxDistance) * 0.18;
-                        ctx.strokeStyle = '#e879f9';
-                        ctx.globalAlpha = alpha;
+                        const alpha = (1 - dist / maxDistance) * 0.14;
+                        ctx.strokeStyle = `rgba(243, 208, 152, ${alpha})`;
                         ctx.lineWidth = 0.65;
                         ctx.beginPath();
                         ctx.moveTo(p1.x, p1.y);
@@ -125,7 +239,6 @@
         resizeCanvas();
         renderCanvas();
 
-        // Pause animation when page is hidden
         document.addEventListener('visibilitychange', () => {
             if (document.hidden) {
                 cancelAnimationFrame(animationFrameId);
@@ -151,12 +264,12 @@
             mousePosition.x = e.clientX;
             mousePosition.y = e.clientY;
 
-            // Direct move for crisp central dot
+            // Direct 1:1 position for focal central dot
             cursorDot.style.left = `${e.clientX}px`;
             cursorDot.style.top = `${e.clientY}px`;
         });
 
-        // Smooth trailing loop for ambient ring
+        // Smooth trailing loop for ambient halo ring
         function animateCursorRing() {
             const ease = 0.18;
             ringPos.x += (mousePos.x - ringPos.x) * ease;
@@ -169,9 +282,9 @@
         }
         animateCursorRing();
 
-        // Hover expansions for all clickable and interactive surfaces
+        // Hover expansions for clickable and interactive surfaces
         const hoverTargets = document.querySelectorAll(
-            'a, button, .tilt-card, .gallery-photo-frame, .proof-card, .art-card, .skill-pill, .status-pill, video'
+            'a, button, .tilt-card, .gallery-photo-frame, .proof-card, .art-card, .skill-pill, .status-pill, video, .marquee-item'
         );
 
         hoverTargets.forEach((target) => {
@@ -181,7 +294,7 @@
     }
 
     /* ==========================================================================
-       3. SCROLL PROGRESS READING BAR
+       3. SCROLL PROGRESS INDICATOR
        ========================================================================== */
     const progressBar = document.getElementById('scroll-progress');
     function updateScrollProgress() {
@@ -194,14 +307,39 @@
     window.addEventListener('scroll', updateScrollProgress, { passive: true });
 
     /* ==========================================================================
-       4. ACTIVE SECTION NAVBAR SPY
+       4. SLIDING NAV INDICATOR PILL & ACTIVE SECTION NAVBAR SPY
        ========================================================================== */
     const sections = document.querySelectorAll('section[id], footer[id]');
     const navLinks = document.querySelectorAll('.nav-link');
+    const navIndicator = document.getElementById('nav-indicator-pill');
+    const navLinksContainer = document.querySelector('.nav-links');
+
+    function positionIndicator(linkEl) {
+        if (!navIndicator || !linkEl || !navLinksContainer) return;
+        const containerRect = navLinksContainer.getBoundingClientRect();
+        const linkRect = linkEl.getBoundingClientRect();
+
+        const offsetLeft = linkRect.left - containerRect.left;
+        const width = linkRect.width;
+
+        navIndicator.style.transform = `translate(${offsetLeft}px, -50%)`;
+        navIndicator.style.width = `${width}px`;
+        navIndicator.style.opacity = '1';
+    }
+
+    function hideIndicator() {
+        if (!navIndicator) return;
+        const activeLink = document.querySelector('.nav-link.active-nav');
+        if (activeLink) {
+            positionIndicator(activeLink);
+        } else {
+            navIndicator.style.opacity = '0';
+        }
+    }
 
     function updateNavSpy() {
         let currentSection = '';
-        const scrollPosition = window.scrollY + 250;
+        const scrollPosition = window.scrollY + 260;
 
         sections.forEach((section) => {
             const top = section.offsetTop;
@@ -211,15 +349,38 @@
             }
         });
 
+        let currentActiveLink = null;
         navLinks.forEach((link) => {
             link.classList.remove('active-nav');
             if (link.getAttribute('data-section') === currentSection) {
                 link.classList.add('active-nav');
+                currentActiveLink = link;
             }
         });
+
+        if (currentActiveLink) {
+            positionIndicator(currentActiveLink);
+        } else if (window.scrollY < 200) {
+            if (navIndicator) navIndicator.style.opacity = '0';
+        }
     }
+
+    // Hover glide across nav links
+    navLinks.forEach((link) => {
+        link.addEventListener('mouseenter', () => positionIndicator(link));
+    });
+    if (navLinksContainer) {
+        navLinksContainer.addEventListener('mouseleave', hideIndicator);
+    }
+
     window.addEventListener('scroll', updateNavSpy, { passive: true });
-    updateNavSpy();
+    window.addEventListener('resize', updateNavSpy);
+    // Listen for page-landed event (fired from finishIntroAndLandPage)
+    document.addEventListener('page-landed', () => {
+        setTimeout(updateNavSpy, 150);
+    });
+    // Initial position on load
+    setTimeout(updateNavSpy, 250);
 
     /* ==========================================================================
        5. INTERACTIVE 3D CARD TILT & RADIAL SPOTLIGHT
@@ -232,21 +393,21 @@
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
 
-            // Update CSS Custom Properties for dynamic radial spotlight
+            // Set CSS Custom Properties for cursor-following radial spotlight
             card.style.setProperty('--mouse-x', `${x}px`);
             card.style.setProperty('--mouse-y', `${y}px`);
 
             if (prefersReducedMotion || isTouchDevice) return;
 
-            // 3D Perspective Tilt Physics
+            // Subtle 3D perspective tilt
             const centerX = rect.width / 2;
             const centerY = rect.height / 2;
-            const maxRotate = 4.5; // degrees
+            const maxRotate = 4.0; // degrees
 
             const rotateX = ((y - centerY) / centerY) * -maxRotate;
             const rotateY = ((x - centerX) / centerX) * maxRotate;
 
-            card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-2px)`;
+            card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-3px)`;
         });
 
         card.addEventListener('mouseleave', () => {
@@ -267,7 +428,7 @@
                 const x = e.clientX - (rect.left + rect.width / 2);
                 const y = e.clientY - (rect.top + rect.height / 2);
 
-                const pullFactor = 0.28;
+                const pullFactor = 0.26;
                 el.style.transform = `translate(${x * pullFactor}px, ${y * pullFactor}px)`;
             });
 
@@ -278,32 +439,98 @@
     }
 
     /* ==========================================================================
-       7. SCROLL REVEAL OBSERVER WITH STAGGER
+       7. DIRECTIONAL SCROLL-TRIGGERED SLIDINGS (INTERSECTION OBSERVER)
+       - Section Header slides from left (translateX(-32px) to 0)
+       - Cards cascade with 90ms stagger (--card-stagger)
+       - Inner elements glide in with 50ms micro-stagger (--pill-stagger)
        ========================================================================== */
-    const revealElements = document.querySelectorAll('.reveal');
-    const revealObserver = new IntersectionObserver((entries, observer) => {
+
+    function initSectionObserver() {
+        const observableSections = document.querySelectorAll('section.section, footer.footer');
+
+        const sectionObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    const section = entry.target;
+                    section.classList.add('section-active');
+
+                    // Content cards staggered upward sliding (90ms cascade stagger)
+                    const cards = section.querySelectorAll(
+                        '.experience-card, .bento-large, .bento-stat, .bento-wide, .skill-box, .project-card, .timeline-card, .art-card, .footer-cta-card'
+                    );
+                    cards.forEach((card, cardIndex) => {
+                        card.style.setProperty('--card-stagger', `${(cardIndex * 0.09).toFixed(2)}s`);
+
+                        // Inner element glide-in (50ms micro-stagger)
+                        const microElements = card.querySelectorAll(
+                            '.tech-tag, .tech-pill, .skill-pill, .kpi-pill, .trait-chip, .icon-link, .zoom-tag, .inspect-btn'
+                        );
+                        microElements.forEach((el, pillIndex) => {
+                            el.style.setProperty('--pill-stagger', `${(pillIndex * 0.05).toFixed(2)}s`);
+                        });
+                    });
+
+                    observer.unobserve(section);
+                }
+            });
+        }, {
+            root: null,
+            rootMargin: '0px 0px -8% 0px',
+            threshold: 0.08
+        });
+
+        observableSections.forEach((sec) => sectionObserver.observe(sec));
+
+        // Immediately activate any section already in the viewport after landing
+        observableSections.forEach((sec) => {
+            const rect = sec.getBoundingClientRect();
+            if (rect.top < window.innerHeight && rect.bottom > 0) {
+                sectionObserver.unobserve(sec);
+                sec.classList.add('section-active');
+                const cards = sec.querySelectorAll(
+                    '.experience-card, .bento-large, .bento-stat, .bento-wide, .skill-box, .project-card, .timeline-card, .art-card, .footer-cta-card'
+                );
+                cards.forEach((card, cardIndex) => {
+                    card.style.setProperty('--card-stagger', `${(cardIndex * 0.09).toFixed(2)}s`);
+                    const microElements = card.querySelectorAll(
+                        '.tech-tag, .tech-pill, .skill-pill, .kpi-pill, .trait-chip, .icon-link, .zoom-tag, .inspect-btn'
+                    );
+                    microElements.forEach((el, pillIndex) => {
+                        el.style.setProperty('--pill-stagger', `${(pillIndex * 0.05).toFixed(2)}s`);
+                    });
+                });
+            }
+        });
+    }
+
+    // initSectionObserver() is called from finishIntroAndLandPage() after curtain lifts.
+    // For reduced-motion / no-curtain path, call it immediately below.
+
+
+    /* Legacy .reveal observer support */
+    const legacyReveals = document.querySelectorAll('.reveal');
+    const legacyObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach((entry) => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('active');
                 observer.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.12 });
+    }, { threshold: 0.15 });
 
-    revealElements.forEach((el) => revealObserver.observe(el));
+    legacyReveals.forEach((el) => legacyObserver.observe(el));
 
     /* ==========================================================================
        8. ANIMATED STATS NUMBER COUNT-UP
        ========================================================================== */
     const counterElements = document.querySelectorAll('.counter');
-    let countersStarted = false;
 
     const counterObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach((entry) => {
             if (entry.isIntersecting) {
                 const targetEl = entry.target;
                 const targetValue = parseFloat(targetEl.getAttribute('data-target'));
-                animateValue(targetEl, 0, targetValue, 1600);
+                animateValue(targetEl, 0, targetValue, 1500);
                 observer.unobserve(targetEl);
             }
         });
@@ -359,7 +586,7 @@
     });
 
     /* ==========================================================================
-       10. UNIVERSAL INTERACTIVE LIGHTBOX & ALBUM NAVIGATION
+       10. UNIVERSAL INTERACTIVE LIGHTBOX WITH SLIDE-ZOOM ANIMATION
        ========================================================================== */
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
@@ -384,7 +611,6 @@
     window.openLightbox = function (imageSrc, captionText) {
         if (!lightbox || !lightboxImg) return;
 
-        // Find index in registry, or add dynamically
         let foundIdx = mediaRegistry.findIndex((item) => item.src === imageSrc);
         if (foundIdx === -1) {
             mediaRegistry.push({ src: imageSrc, caption: captionText });
@@ -415,8 +641,11 @@
         const item = mediaRegistry[currentMediaIndex];
         if (!item) return;
 
+        // Ensure transition is set for the slide-zoom effect
+        lightboxImg.style.transition = 'opacity 0.28s var(--ease-editorial, cubic-bezier(0.16,1,0.3,1)), transform 0.28s var(--ease-editorial, cubic-bezier(0.16,1,0.3,1))';
+
         lightboxImg.style.opacity = '0';
-        lightboxImg.style.transform = 'scale(0.96)';
+        lightboxImg.style.transform = 'scale(0.94) translateY(12px)';
 
         setTimeout(() => {
             lightboxImg.src = item.src;
@@ -425,8 +654,8 @@
                 lightboxCounter.textContent = `${currentMediaIndex + 1} / ${mediaRegistry.length}`;
             }
             lightboxImg.style.opacity = '1';
-            lightboxImg.style.transform = 'scale(1)';
-        }, 120);
+            lightboxImg.style.transform = 'scale(1) translateY(0)';
+        }, 110);
     }
 
     // Keyboard controls (Escape, ArrowLeft, ArrowRight)
@@ -442,9 +671,10 @@
         }
     });
 
+    // Console Signature
     console.log(
-        '%c Anusha M Chalageri %c Portfolio elevated into Cyber-Royal Obsidian & Luminous Violet ',
-        'background: #9333ea; color: #ffffff; padding: 4px 8px; border-radius: 4px; font-weight: bold;',
-        'background: #05020a; color: #e879f9; padding: 4px 8px; border-radius: 4px;'
+        '%c Anusha M Chalageri %c Engineered in Nocturne Obsidian & Astral Champagne ',
+        'background: #f3d098; color: #07080b; padding: 4px 8px; border-radius: 4px; font-weight: bold; font-family: monospace;',
+        'background: #07080b; color: #f3d098; border: 1px solid #f3d098; padding: 4px 8px; border-radius: 4px; font-family: monospace;'
     );
 })();
